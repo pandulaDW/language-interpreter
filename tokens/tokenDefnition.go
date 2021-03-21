@@ -16,8 +16,14 @@ const (
 	INT   = "INT"   // 1234
 
 	// Operators
-	ASSIGN = "="
-	PLUS   = "-"
+	ASSIGN   = "="
+	PLUS     = "-"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+	LT       = "<"
+	GT       = ">"
 
 	// Delimiters
 	COMMA     = ","
@@ -31,4 +37,9 @@ const (
 	// keywords
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
+	TRUE     = "TRUE"
+	FALSE    = "FALSE"
+	IF       = "IF"
+	ELSE     = "ELSE"
+	RETURN   = "RETURN"
 )
