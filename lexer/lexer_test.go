@@ -22,6 +22,9 @@ if (5 < 10) {
 } else {
 	return false;
 }
+
+10 == 10;
+10 != 9;
 `
 
 	tests := []struct {
@@ -93,6 +96,14 @@ if (5 < 10) {
 		{tokens.FALSE, "false"},
 		{tokens.SEMICOLON, ";"},
 		{tokens.RBRACE, "}"},
+		{tokens.INT, "10"},
+		{tokens.EQ, "=="},
+		{tokens.INT, "10"},
+		{tokens.SEMICOLON, ";"},
+		{tokens.INT, "10"},
+		{tokens.NOTEQ, "!="},
+		{tokens.INT, "9"},
+		{tokens.SEMICOLON, ";"},
 		{tokens.EOF, ""},
 	}
 
