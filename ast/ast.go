@@ -2,7 +2,6 @@ package ast
 
 import (
 	"github.com/pandulaDW/language-interpreter/tokens"
-	"go/token"
 )
 
 // Interfaces ----------------------------------
@@ -46,13 +45,13 @@ func (i *Identifier) TokenLiteral() string {
 
 // Let Statement --------------------------------
 type LetStatement struct {
-	Token token.Token // The tokens.LET token
+	Token tokens.Token // The tokens.LET token
 	Name  *Identifier
 	Value Expression
 }
 
 func (l LetStatement) TokenLiteral() string {
-	panic("implement me")
+	return tokens.LET
 }
 
 func (l LetStatement) statementNode() {
