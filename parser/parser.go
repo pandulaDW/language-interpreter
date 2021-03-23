@@ -95,7 +95,7 @@ func (p *Parser) parseLetStatement() ast.Statement {
 		return nil
 	}
 
-	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
+	stmt.Name = &ast.Identifier{Token: p.curToken}
 
 	if !p.expectPeek(tokens.ASSIGN) {
 		return nil

@@ -46,7 +46,6 @@ func (p *Program) String() string {
 // Identifier Statement ------------------------
 type Identifier struct {
 	Token tokens.Token // the tokens.IDENT token
-	Value string
 }
 
 func (i *Identifier) expressionNode() {}
@@ -56,7 +55,7 @@ func (i *Identifier) TokenLiteral() string {
 }
 
 func (i *Identifier) String() string {
-	return i.Value
+	return i.TokenLiteral()
 }
 
 // LetStatement --------------------------------
@@ -113,7 +112,7 @@ func (r ReturnStatement) String() string {
 	return out.String()
 }
 
-//ExpressionStatement -----------------------------
+// ExpressionStatement -----------------------------
 type ExpressionStatement struct {
 	Token      tokens.Token // the first token of the expression
 	Expression Expression
