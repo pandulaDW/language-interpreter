@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"github.com/pandulaDW/language-interpreter/ast"
 	"github.com/pandulaDW/language-interpreter/lexer"
 	"github.com/pandulaDW/language-interpreter/tokens"
@@ -11,11 +12,12 @@ type Parser struct {
 	l         *lexer.Lexer
 	curToken  tokens.Token
 	peekToken tokens.Token
+	errors    []string
 }
 
 //New is the constructor of the parser
 func New(l *lexer.Lexer) *Parser {
-	p := &Parser{l: l}
+	p := &Parser{l: l, errors: []string{}}
 
 	// Read two tokens, so curToken and peekToken are both set
 	p.nextToken()
@@ -43,7 +45,18 @@ func (p *Parser) expectPeek(t tokens.TokenType) bool {
 		p.nextToken()
 		return true
 	}
+	p.peerError(t)
 	return false
+}
+
+func (p *Parser) Errors() []string {
+	return p.errors
+}
+
+func (p *Parser) peerError(t tokens.TokenType) {
+	msg := fmt.Sprintf("expected next token to be %s, got %s instead",
+		t, p.peekToken.Type)
+	p.errors = append(p.errors, msg)
 }
 
 // ParseProgram creates a new AST root node and does the main parsing
